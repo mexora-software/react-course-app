@@ -1,6 +1,6 @@
 # React Course App
 
-Interactive React learning platform built with React + Vite.
+Interactive React learning platform built with React + Vite
 
 ## Features
 
@@ -68,4 +68,4 @@ jsx const { t } = useTranslation();  <h1>{t("welcome")}</h1>
 
 ## Author
 
-Developed by Alejandro Avalos through Mexora Software.
+Developed by Alejandro Avalos through Mexora Software
