@@ -1,0 +1,152 @@
+{
+  "app": {
+    "brand": "React Academy",
+    "subtitle": "Curso online",
+    "suggestedPath": "Ruta sugerida",
+    "heroTitle": "Aprende React desde fundamentos hasta arquitectura",
+    "modules": "Módulos"
+  },
+  "practice": {
+    "title": "Mini práctica",
+    "description": "Después de estudiar este módulo, intenta explicar el concepto sin ver el código.",
+    "items": [
+      "Identifica qué datos son props.",
+      "Decide qué debería ser state.",
+      "Divide la UI en componentes."
+    ]
+  },
+  "quiz": {
+    "eyebrow": "Evaluación rápida",
+    "title": "Quiz de conceptos",
+    "correct": "correctas",
+    "answered": "Has respondido {{completed}} de {{total}} preguntas.",
+    "questions": [
+      {
+        "question": "¿Qué provoca que React vuelva a renderizar un componente?",
+        "options": [
+          "Cambiar una variable normal",
+          "Cambiar state o props",
+          "Crear un archivo CSS"
+        ],
+        "answer": 1
+      },
+      {
+        "question": "¿Para qué sirven las props?",
+        "options": [
+          "Para pasar datos a componentes",
+          "Para instalar dependencias",
+          "Para crear rutas dinámicas"
+        ],
+        "answer": 0
+      },
+      {
+        "question": "¿Cuándo conviene usar estado global?",
+        "options": [
+          "Siempre",
+          "Cuando el dato se comparte entre muchas zonas",
+          "Solo para botones"
+        ],
+        "answer": 1
+      }
+    ]
+  },
+  "modules": {
+    "intro": {
+      "title": "Fundamentos de React",
+      "level": "Básico",
+      "description": "Qué es React, JSX, componentes y cómo pensar en UI declarativa.",
+      "lessons": [
+        {
+          "title": "¿Qué es React?",
+          "content": "React es una librería de JavaScript para construir interfaces de usuario mediante componentes reutilizables. Su idea principal es describir cómo debe verse la UI según el estado actual de la aplicación.",
+          "code": "function Welcome() {\n  return <h1>Hola React</h1>;\n}"
+        },
+        {
+          "title": "JSX",
+          "content": "JSX permite escribir estructura parecida a HTML dentro de JavaScript. En realidad se transforma a llamadas de React para crear elementos.",
+          "code": "const name = \"Alex\";\nconst element = <h2>Bienvenido, {name}</h2>;"
+        }
+      ]
+    },
+    "components": {
+      "title": "Componentes y Props",
+      "level": "Básico",
+      "description": "Cómo dividir interfaces en piezas pequeñas, reutilizables y mantenibles.",
+      "lessons": [
+        {
+          "title": "Componentes",
+          "content": "Un componente es una función que regresa UI. La clave es separar responsabilidades: header, cards, formularios, listas, botones, etc.",
+          "code": "function ProductCard({ name, price }) {\n  return (\n    <article>\n      <h3>{name}</h3>\n      <p>{price}</p>\n    </article>\n  );\n}"
+        },
+        {
+          "title": "Props",
+          "content": "Las props son datos que un componente recibe desde su padre. Sirven para personalizar componentes sin duplicar código.",
+          "code": "<ProductCard name=\"Café\" price={45} />"
+        }
+      ]
+    },
+    "state": {
+      "title": "State y Eventos",
+      "level": "Básico",
+      "description": "Manejo de interacción del usuario usando useState y eventos.",
+      "lessons": [
+        {
+          "title": "useState",
+          "content": "useState guarda información que puede cambiar con el tiempo. Cuando cambia el state, React vuelve a renderizar el componente.",
+          "code": "const [count, setCount] = useState(0);\n\n<button onClick={() => setCount(count + 1)}>\n  Clicks: {count}\n</button>"
+        },
+        {
+          "title": "Eventos",
+          "content": "React usa eventos como onClick, onChange y onSubmit. Normalmente actualizan estado o disparan lógica de negocio.",
+          "code": "function SearchBox() {\n  const [query, setQuery] = useState(\"\");\n  return <input value={query} onChange={(e) => setQuery(e.target.value)} />;\n}"
+        }
+      ]
+    },
+    "effects": {
+      "title": "Effects y Ciclo de Vida",
+      "level": "Intermedio",
+      "description": "Cuándo usar useEffect para sincronizar con sistemas externos.",
+      "lessons": [
+        {
+          "title": "useEffect",
+          "content": "useEffect sirve para sincronizar el componente con algo externo: APIs, subscriptions, storage, timers o eventos del navegador.",
+          "code": "useEffect(() => {\n  document.title = `Curso: ${lessonTitle}`;\n}, [lessonTitle]);"
+        },
+        {
+          "title": "Cleanup",
+          "content": "Cuando un efecto crea una suscripción, timer o listener, conviene limpiar ese recurso para evitar memory leaks.",
+          "code": "useEffect(() => {\n  const id = setInterval(() => console.log(\"tick\"), 1000);\n  return () => clearInterval(id);\n}, []);"
+        }
+      ]
+    },
+    "routing": {
+      "title": "Routing",
+      "level": "Intermedio",
+      "description": "Conceptos de rutas, páginas, navegación y parámetros dinámicos.",
+      "lessons": [
+        {
+          "title": "Rutas",
+          "content": "En una SPA, el routing cambia la vista sin recargar toda la página. Frameworks como Next.js usan rutas basadas en carpetas; React Router usa configuración de rutas.",
+          "code": "<Routes>\n  <Route path=\"/\" element={<Home />} />\n  <Route path=\"/products/:id\" element={<ProductDetail />} />\n</Routes>"
+        }
+      ]
+    },
+    "state-management": {
+      "title": "Estado Global",
+      "level": "Intermedio",
+      "description": "Context, Zustand, Redux y cuándo usar cada opción.",
+      "lessons": [
+        {
+          "title": "Estado local vs global",
+          "content": "El estado local vive dentro de un componente. El estado global se comparte entre múltiples pantallas o componentes: usuario autenticado, carrito, tema, preferencias, etc.",
+          "code": "// Ejemplo conceptual con store\nconst cartItems = useCartStore((state) => state.items);\nconst addItem = useCartStore((state) => state.addItem);"
+        },
+        {
+          "title": "Cuándo escalar",
+          "content": "No todo necesita Redux o Zustand. Primero usa state local; si muchos componentes necesitan el mismo dato, considera Context o una store global.",
+          "code": "// Regla práctica\n// 1 componente: useState\n// Varios cercanos: lift state up\n// Muchas pantallas: store global"
+        }
+      ]
+    }
+  }
+}

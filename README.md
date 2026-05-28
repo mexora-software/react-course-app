@@ -1,35 +1,71 @@
-# React Academy
+# React Course App
 
-App tipo curso online hecha con React + Vite.
+Interactive React learning platform built with React + Vite.
 
-## Qué incluye
+## Features
 
-- Módulos sobre fundamentos de React
-- Componentes y props
-- State y eventos
-- Effects
-- Routing
-- Estado global
-- Ejemplos de código
-- Mini quiz interactivo
-- Diseño responsive
+- React fundamentals
+- Components and Props
+- State management
+- Hooks examples
+- Interactive lessons
+- Multi-language support (English / Spanish)
+- Modern UI
+- Responsive design
 
-## Cómo correrla
+## Tech Stack
 
-```bash
-npm install
-npm run dev
-```
+- React
+- Vite
+- JavaScript
+- CSS
+- react-i18next
 
-Después abre la URL que aparece en la terminal, normalmente:
+## Installation
 
-```bash
-http://localhost:5173
-```
+Clone the repository:
 
-## Build de producción
+bash git clone https://github.com/mexora-software/react-course-app.git 
 
-```bash
-npm run build
-npm run preview
-```
+Go to the project folder:
+
+bash cd react-course-app 
+
+Install dependencies:
+
+bash npm install 
+
+Start development server:
+
+bash npm run dev 
+
+## Multi-language Setup
+
+Install i18n dependencies:
+
+bash npm install react-i18next i18next 
+
+Project structure:
+
+txt src/ ├─ i18n/ │  ├─ index.js │  ├─ locales/ │  │  ├─ en/ │  │  │  └─ common.json │  │  └─ es/ │  │     └─ common.json 
+
+Example translation file:
+
+json {   "welcome": "Welcome to the React course" } 
+
+Usage:
+
+jsx const { t } = useTranslation();  <h1>{t("welcome")}</h1> 
+
+## Future Improvements
+
+- Quizzes
+- Authentication
+- Progress tracking
+- Dark mode
+- Code playground
+- AI assistant integration
+
+## Author
+
+Developed by Alejandro Avalos through Mexora Software.

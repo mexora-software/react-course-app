@@ -1,0 +1,152 @@
+{
+    "app": {
+        "brand": "React Academy",
+        "subtitle": "Online course",
+        "suggestedPath": "Suggested path",
+        "heroTitle": "Learn React from fundamentals to architecture",
+        "modules": "Modules"
+    },
+    "practice": {
+        "title": "Mini practice",
+        "description": "After studying this module, try to explain the concept without looking at the code.",
+        "items": [
+            "Identify which data should be props.",
+            "Decide what should be state.",
+            "Split the UI into components."
+        ]
+    },
+    "quiz": {
+        "eyebrow": "Quick evaluation",
+        "title": "Concept quiz",
+        "correct": "correct",
+        "answered": "You have answered {{completed}} of {{total}} questions.",
+        "questions": [
+            {
+                "question": "What causes React to re-render a component?",
+                "options": [
+                    "Changing a normal variable",
+                    "Changing state or props",
+                    "Creating a CSS file"
+                ],
+                "answer": 1
+            },
+            {
+                "question": "What are props used for?",
+                "options": [
+                    "Passing data to components",
+                    "Installing dependencies",
+                    "Creating dynamic routes"
+                ],
+                "answer": 0
+            },
+            {
+                "question": "When is it a good idea to use global state?",
+                "options": [
+                    "Always",
+                    "When data is shared across many areas",
+                    "Only for buttons"
+                ],
+                "answer": 1
+            }
+        ]
+    },
+    "modules": {
+        "intro": {
+            "title": "React Fundamentals",
+            "level": "Basic",
+            "description": "What React is, JSX, components, and how to think in declarative UI.",
+            "lessons": [
+                {
+                    "title": "What is React?",
+                    "content": "React is a JavaScript library for building user interfaces using reusable components. Its main idea is to describe how the UI should look based on the current application state.",
+                    "code": "function Welcome() {\n  return <h1>Hello React</h1>;\n}"
+                },
+                {
+                    "title": "JSX",
+                    "content": "JSX lets you write HTML-like structure inside JavaScript. It is transformed into React calls to create elements.",
+                    "code": "const name = \"Alex\";\nconst element = <h2>Welcome, {name}</h2>;"
+                }
+            ]
+        },
+        "components": {
+            "title": "Components and Props",
+            "level": "Basic",
+            "description": "How to split interfaces into small, reusable, and maintainable pieces.",
+            "lessons": [
+                {
+                    "title": "Components",
+                    "content": "A component is a function that returns UI. The key is to separate responsibilities: headers, cards, forms, lists, buttons, etc.",
+                    "code": "function ProductCard({ name, price }) {\n  return (\n    <article>\n      <h3>{name}</h3>\n      <p>{price}</p>\n    </article>\n  );\n}"
+                },
+                {
+                    "title": "Props",
+                    "content": "Props are data a component receives from its parent. They help customize components without duplicating code.",
+                    "code": "<ProductCard name=\"Coffee\" price={45} />"
+                }
+            ]
+        },
+        "state": {
+            "title": "State and Events",
+            "level": "Basic",
+            "description": "Handling user interaction using useState and events.",
+            "lessons": [
+                {
+                    "title": "useState",
+                    "content": "useState stores information that can change over time. When state changes, React re-renders the component.",
+                    "code": "const [count, setCount] = useState(0);\n\n<button onClick={() => setCount(count + 1)}>\n  Clicks: {count}\n</button>"
+                },
+                {
+                    "title": "Events",
+                    "content": "React uses events such as onClick, onChange and onSubmit. They usually update state or trigger business logic.",
+                    "code": "function SearchBox() {\n  const [query, setQuery] = useState(\"\");\n  return <input value={query} onChange={(e) => setQuery(e.target.value)} />;\n}"
+                }
+            ]
+        },
+        "effects": {
+            "title": "Effects and Lifecycle",
+            "level": "Intermediate",
+            "description": "When to use useEffect to synchronize with external systems.",
+            "lessons": [
+                {
+                    "title": "useEffect",
+                    "content": "useEffect is used to synchronize the component with something external: APIs, subscriptions, storage, timers or browser events.",
+                    "code": "useEffect(() => {\n  document.title = `Course: ${lessonTitle}`;\n}, [lessonTitle]);"
+                },
+                {
+                    "title": "Cleanup",
+                    "content": "When an effect creates a subscription, timer or listener, it is good practice to clean up the resource to avoid memory leaks.",
+                    "code": "useEffect(() => {\n  const id = setInterval(() => console.log(\"tick\"), 1000);\n  return () => clearInterval(id);\n}, []);"
+                }
+            ]
+        },
+        "routing": {
+            "title": "Routing",
+            "level": "Intermediate",
+            "description": "Concepts of routes, pages, navigation and dynamic parameters.",
+            "lessons": [
+                {
+                    "title": "Routes",
+                    "content": "In an SPA, routing changes the view without reloading the entire page. Frameworks like Next.js use file-based routing; React Router uses route configuration.",
+                    "code": "<Routes>\n  <Route path=\"/\" element={<Home />} />\n  <Route path=\"/products/:id\" element={<ProductDetail />} />\n</Routes>"
+                }
+            ]
+        },
+        "state-management": {
+            "title": "Global State",
+            "level": "Intermediate",
+            "description": "Context, Zustand, Redux and when to use each option.",
+            "lessons": [
+                {
+                    "title": "Local vs global state",
+                    "content": "Local state lives inside a component. Global state is shared across multiple screens or components: authenticated user, cart, theme, preferences, etc.",
+                    "code": "// Conceptual store example\nconst cartItems = useCartStore((state) => state.items);\nconst addItem = useCartStore((state) => state.addItem);"
+                },
+                {
+                    "title": "When to scale",
+                    "content": "Not everything needs Redux or Zustand. Start with local state; if many components need the same data, consider Context or a global store.",
+                    "code": "// Practical rule\n// 1 component: useState\n// Nearby components: lift state up\n// Multiple screens: global store"
+                }
+            ]
+        }
+    }
+}
